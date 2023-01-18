@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Jurusan;
-use App\Models\Kelas;
+use App\Models\Mapel;
+use App\Models\Mengajar;
 
-class JurusanController extends Controller
+class MapelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        return view('jurusan.index',[
-            'jurusan' => Jurusan::all()
+        return view('mapel.index',[
+            'mapel' => Mapel::all()
         ]);
     }
 
@@ -27,7 +27,7 @@ class JurusanController extends Controller
      */
     public function create()
     {
-        return view('jurusan.create');
+        return view('mapel.create');
     }
 
     /**
@@ -38,11 +38,11 @@ class JurusanController extends Controller
      */
     public function store(Request $request)
     {
-        $data_jurusan = $request->validate([
-            'nama_jurusan' => ['required']
+        $data_mapel = $request->validate([
+            'nama_mapel' => ['required']
         ]);
-        Jurusan::create($data_jurusan);
-        return redirect ('/jurusan/index')->with('succes','Data jurusan berhasil ditambah');
+        Mapel::create($data_mapel);
+        return redirect ('/mapel/index')->with('succes','Data jurusan berhasil ditambah');
     }
 
     /**
@@ -62,10 +62,10 @@ class JurusanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jurusan $jurusan)
+    public function edit(Mapel $mapel)
     {
-        return view('jurusan.edit',[
-            'jurusan' => $jurusan
+        return view('mapel.edit', [
+            'mapel' => $mapel
         ]);
     }
 
@@ -76,14 +76,14 @@ class JurusanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jurusan $jurusan)
+    public function update(Request $request, Mapel $mapel)
     {
-        $data_jurusan = $request->validate([
-            'nama_jurusan' => ['required']
+        $data_mapel = $request->validate([
+            'nama_mapel' => ['required']
         ]);
+        $mapel->update($data_mapel);
+        return redirect ('/mapel/index')->with('succes', "Data mata pelajara berhasil diubah");
 
-        $jurusan->update($data_jurusan);
-        return redirect('/jurusan/index')->with('succes', "Data jurusan Berhasil diubah");
     }
 
     /**
@@ -92,13 +92,14 @@ class JurusanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Jurusan $jurusan)
+    public function destroy(Mapel $mapel)
     {
-        $kelas = Kelas::where('jurusan_id', $jurusan->id)->first();
-        if($kelas){
-            return back()->with('error', "$jurusan->nama_jurusan Masih digunakan di menu kelas");
+        $mengajar = Mengajar::where ('mapel_id', $mapel->id)->first();
+
+        if($mengajar) {
+            return back()->with ('error', "$mapel->nama_mapel masih digunakan dimenu mengajar " );
         }
-        $jurusan->delete();
-        return back()->with('succes', "Data Jurusan berhasil dihapus");
+        $mapel->delete();
+        return back()->with('succes', "Data mata pelajaran berhasil dihapus");
     }
 }

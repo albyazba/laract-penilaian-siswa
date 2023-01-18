@@ -9,7 +9,7 @@ class Kelas extends Model
 {
     use HasFactory;
 
-    protected $table = 'mapels';
+    protected $table = 'Kelas';
     protected $guarded = ['id'];
     protected $primaryKey = 'id';
     public function jurusan()

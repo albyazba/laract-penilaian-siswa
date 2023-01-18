@@ -20,10 +20,10 @@
                 @foreach ($jurusan as $j)
                 <tr>
                     <td>{{$loop->iteration}}</td>
-                    <td>{{$j->nama_jurusam}}</td>
+                    <td>{{$j->nama_jurusan}}</td>
                     <td>
                         <a href="/jurusan/edit/{{$j->id}}" class="button-warning">EDIT</a>
-                        <a href="/jurusan/destroy/{{$j->id}}" onlick="return confirm('yakin hapus?')" class="button-warning">HAPUS</a>
+                        <a href="/jurusan/destroy/{{$j->id}}" onclick="return confirm('yakin hapus?')" class="button-warning">HAPUS</a>
                     </td>
                 </tr>
                 @endforeach
