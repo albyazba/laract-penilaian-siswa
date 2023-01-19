@@ -10,6 +10,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\MengajarController;
+use App\Http\Controllers\NilaiController;
 use Inertia\Inertia;
 
 
@@ -32,6 +33,16 @@ Route::prefix('guru')->group(function(){
     Route::get('/destroy/{guru}',[GuruController::class, 'destroy']);
 
 });
+Route::prefix('nilai')->group(function(){
+    Route::get('/index',[NilaiController::class, 'index']);
+    Route::get('/create',[NilaiController::class, 'create']);
+    Route::post('/store',[NilaiController::class, 'store']);
+    Route::get('/edit/{nilai}',[NilaiController::class, 'edit']);
+    Route::post('/update/{nilai}',[NilaiController::class, 'update']);
+    Route::get('/destroy/{nilai}',[NilaiController::class, 'destroy']);
+
+});
+
 Route::prefix('siswa')->group(function(){
     Route::get('/index',[SiswaController::class, 'index']);
     Route::get('/create',[SiswaController::class, 'create']);

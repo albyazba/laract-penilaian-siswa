@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td width="25%">PASSWORD</td>
-                    <td width="25%"><input type="password" name="password" value="{{ $guru->password}}></td>
+                    <td width="25%"><input type="password" name="password" value="{{ $guru->password}}"></td>
                 </tr>
                 <tr>
                     <td colspan="2">
