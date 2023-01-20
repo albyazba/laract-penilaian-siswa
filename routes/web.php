@@ -42,6 +42,12 @@ Route::prefix('nilai')->group(function(){
     Route::get('/destroy/{nilai}',[NilaiController::class, 'destroy']);
 
 });
+    Route::get('/',[IndexController::class, 'index']);
+    Route::post('/login/admin',[IndexController::class, 'loginAdmin']);
+    Route::post('/login/siswa',[IndexController::class, 'loginSiswa']);
+    Route::post('/login/guru',[IndexController::class, 'loginGuru']);
+    Route::get('home',[IndexController::class, 'home']);
+    Route::get('/logout',[IndexController::class, 'logout']);
 
 Route::prefix('siswa')->group(function(){
     Route::get('/index',[SiswaController::class, 'index']);
@@ -91,14 +97,14 @@ Route::prefix('kelas')->group(function(){
 });
 
 Route::get('/home', [IndexController::class, 'home']);
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
