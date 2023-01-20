@@ -4,22 +4,24 @@
         <b>
             <h2>LIST NILAI</h2>
             <a href="/nilai/create" class="button-primary">Tambah Data</a>
-        
-            @if (session('succes'))
-                <p class="text-succes">{{ session('succes') }}</p>
+            @if(session('success'))
+            <p class="text-success">{{ session('success') }}</p>
+                @endif        
+            @if (session('error'))
+                <p class="text-succes">{{ session('error') }}</p>
             @endif
             <table cellpadding="10">
                 <tr>
-                    <td>NO</td>
-                    <td>GURU MAPEL</td>
-                    <td>NAMA SISWA</td>
-                    <td>UH</td>
-                    <td>UTS</td>
-                    <td>UAS</td>
-                    <td>NA</td>
-                   
-                        <td>ACTION</td>
-                  
+                    <th>NO</th>
+                    <th>GURU MAPEL</th>
+                    <th>NAMA SISWA</th>
+                    <th>UH</th>
+                    <th>UTS</th>
+                    <th>UAS</th>
+                    <th>NA</th>
+                    @if (session('user')->role == 'guru')
+                        <th>ACTION</th>
+                    @endif
                 </tr>
                 @foreach ($nilai as $each)
                     <tr>

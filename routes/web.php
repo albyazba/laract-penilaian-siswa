@@ -46,7 +46,7 @@ Route::prefix('nilai')->group(function(){
     Route::post('/login/admin',[IndexController::class, 'loginAdmin']);
     Route::post('/login/siswa',[IndexController::class, 'loginSiswa']);
     Route::post('/login/guru',[IndexController::class, 'loginGuru']);
-    Route::get('home',[IndexController::class, 'home']);
+    Route::get('/home',[IndexController::class, 'home']);
     Route::get('/logout',[IndexController::class, 'logout']);
 
 Route::prefix('siswa')->group(function(){

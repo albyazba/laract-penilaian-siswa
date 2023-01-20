@@ -184,7 +184,7 @@ export default function login(){
                                 <input 
                                     type="text" 
                                     onChange={(e) => 
-                                        setNis(e.target.value)
+                                        setNip(e.target.value)
                                     }
                                      />
                             </td>
